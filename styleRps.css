@@ -1,0 +1,55 @@
+body {
+  text-align: center;
+  background-image:url( "image/pexels-karolina-grabowska-4464438.jpg" );
+  background-attachment:fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.bttns {
+  /* overflow: hidden; */
+  text-align: center;
+  }
+
+  .bttnDiv {
+    display:inline-block; /* horizontally align */
+  }
+
+  .score {
+    margin: 0 auto;
+    width: 200px;
+    position: relative;
+
+    background: rgba(255,255,255,0.5);
+    top: 150px;
+  }
+  
+  .bttn {
+    border-width: 0;
+    width: 100px;
+    height: 50px;
+    margin: 15px;
+    border-radius: .5rem;
+    font-size: 15px;
+    transition: all .07s ease;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    text-shadow: 0 0 .5rem black;
+    cursor: pointer;
+  }
+
+  .bttn:hover {
+    background-color:black;
+
+  }
+
+  #bigTxt , .result{
+    font-size: 150%;
+  }
+
+  .playing {
+    transform: scale(1.1);
+    /* border-color: black; */
+    /* box-shadow: 10px grey; */
+  }

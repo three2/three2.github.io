@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleRps.css">
+
+</head>
+
+<body>
+
+    <h1><strong>Rock Paper Scissors Game</strong></h1>
+
+    <div class="bttns">
+        <div class="bttnDiv">
+            <button class="bttn" value="rock">Rock</button>
+        </div>
+        <div class="bttnDiv">
+            <button class="bttn" value="paper">Paper</button>
+        </div>
+        <div class="bttnDiv">
+            <button class="bttn" value="scissor">Scissor</button>
+        </div>
+    </div>
+
+
+    <div class="score">
+        <h3>player selection: <span id="playerSelection"></span></h3>
+        <h3>computer selection: <span id="computerSelection"></span></h3>
+
+        <h3 class="result"></h3>
+
+        <h3 id="bigTxt">Player Score : <span id="playerScore"> </span>
+            Computer Score : <span id="computerScore"> </span></h3>
+
+    </div>
+
+
+    <audio src="sounds/ride.wav"></audio>
+
+
+    <script>
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function gamePlay(playerSelection) {
+
+            let gameSelections = ["rock", "paper", "scissor"];
+
+            let computer = function getRandomSelection() {
+                return gameSelections[Math.floor(Math.random() * 3)];
+            } // get computer input 
+            computerSelection = computer();
+
+            document.querySelector("#playerSelection").textContent = playerSelection;
+            document.querySelector("#computerSelection").textContent = computerSelection;
+
+            if (computerSelection === playerSelection) {
+                document.querySelector(".result").textContent = "match draw";
+            } else if ((computerSelection === "rock" && playerSelection === "paper") || (computerSelection === "paper" && playerSelection === "scissor") || (computerSelection === "scissor" && playerSelection === "rock")) {
+                document.querySelector(".result").textContent = "you won";
+                playerScore++;
+            } else {
+                document.querySelector(".result").textContent = "you lose";
+                computerScore++;
+            }
+
+            addScore(playerScore, computerScore);
+        }
+
+        function addScore(playerScore, computerScore) {
+
+            document.querySelector("#playerScore").textContent = playerScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
+
+        // styles
+
+        const buttons = document.querySelectorAll(".bttn");
+        // in here.querySelectorAll() doesn't return a HTMLCollection but a Nodelist.have to iterate over the nodelist, 
+        //     https://stackoverflow.com/questions/50643302/addeventlistener-on-a-queryselectorall-with-classlist
+
+        buttons.forEach(
+            function (/*elem*/buttonsEle) {             //buttonsEle is the .bttn elements
+                buttonsEle.addEventListener("click", onClickBttn);
+                buttonsEle.addEventListener("transitionend", removeTransition);
+            }
+        );
+
+        function onClickBttn() {
+
+            this.classList.add('playing');
+            playSound();
+            let playerSelection = this.value;
+            gamePlay(playerSelection);
+        }
+
+        function playSound() {
+
+            const audio = document.querySelector("audio");
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            e.target.classList.remove('playing');
+        }
+
+
+
+    </script>
+</body>
+
+</html>
