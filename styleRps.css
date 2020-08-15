@@ -29,14 +29,20 @@ body {
   }
 
   .score {
-    background: rgba(255,255,255,0.5);
-    border: 2px solid midnightblue;
-    opacity: 0.6;
+    background: rgba(100, 10, 10, 0.2);
+    border: 2px solid #a9a7b5;
+    /* opacity: 0.6; */
     flex: 1;
 }
 
 .score h3{
-  margin-top: 1px;
+  color: black;
+}
+
+@media only screen and (min-width: 500px) {
+  .score {
+    margin-top: 80px;
+  }
 }
   
   .bttn {
