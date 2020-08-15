@@ -3,40 +3,55 @@ body {
   background-image:url( "image/pexels-karolina-grabowska-4464438.jpg" );
   background-attachment:fixed;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+  width: 100%;
+  margin: 0 auto;
+}
 
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+  align-items: center;
 }
 
 .bttns {
-  /* overflow: hidden; */
-  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   }
 
-  .bttnDiv {
-    display:inline-block; /* horizontally align */
+  .bttnDiv{
+    flex: 1;
   }
 
   .score {
-    margin: 0 auto;
-    width: 200px;
-    position: relative;
-
     background: rgba(255,255,255,0.5);
-    top: 150px;
-  }
+    border: 2px solid midnightblue;
+    opacity: 0.6;
+    flex: 1;
+}
+
+.score h3{
+  margin-top: 1px;
+}
   
   .bttn {
-    border-width: 0;
+    border: 2px solid black;
     width: 100px;
     height: 50px;
     margin: 15px;
-    border-radius: .5rem;
+    border-radius: 1rem;
     font-size: 15px;
-    transition: all .07s ease;
+    transition: all .09s ease;
     color: white;
     background: rgba(0,0,0,0.4);
-    text-shadow: 0 0 .5rem black;
     cursor: pointer;
+        /* display:inline-block; horizontally align */
+
   }
 
   .bttn:hover {
@@ -50,6 +65,4 @@ body {
 
   .playing {
     transform: scale(1.1);
-    /* border-color: black; */
-    /* box-shadow: 10px grey; */
   }
